@@ -58,7 +58,8 @@ class AnimatedSprite(SpriteObject):
     def __init__(self, game, path='resources/sprites/animated_sprites/green_light/0.png', pos=(11.5, 3.5), scale=0.7, shift=0.27, animation_time=120):
         super().__init__(game, path, pos, scale, shift)
 
-        path = os.path.join(abs_folder_path, path)
+        if not os.path.isabs(path):
+            path = os.path.join(abs_folder_path, path)
 
         self.animation_time = animation_time
         self.path = path.rsplit('/', 1)[0]
