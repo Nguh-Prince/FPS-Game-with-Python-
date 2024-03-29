@@ -1,9 +1,5 @@
-import os
-
 import pygame as pg
 from settings import *
-
-abs_folder_path = os.path.dirname(__file__)
 
 class ObjectRenderer:
     def __init__(self, game) -> None:

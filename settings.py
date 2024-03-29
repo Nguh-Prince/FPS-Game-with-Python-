@@ -1,6 +1,8 @@
 # game settings
 import math
+import os
 
+abs_folder_path = os.path.dirname(__file__)
 
 RES = WIDTH, HEIGHT = 1600, 900
 HALF_WIDTH = WIDTH // 2
