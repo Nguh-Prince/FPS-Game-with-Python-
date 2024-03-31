@@ -1,12 +1,12 @@
 from sprite_object import *
 
-class Weapon(AnimatedSprite):
-    def __init__(self, game, path='resources/sprites/weapon/shotgun/0.png', pos=..., scale=0.7, shift=0.27, animation_time=120):
-        super().__init__(game, path, scale=scale, animation_time=animation_time)
 
+class Weapon(AnimatedSprite):
+    def __init__(self, game, path='resources/sprites/weapon/shotgun/0.png', scale=0.4, animation_time=90):
+        super().__init__(game=game, path=path, scale=scale, animation_time=animation_time)
         self.images = deque(
-            [pg.transform.smoothscale(image, (self.image.get_width() * scale, self.image.get_height() * scale)) for image in self.images]
-        )
+            [pg.transform.smoothscale(img, (self.image.get_width() * scale, self.image.get_height() * scale))
+             for img in self.images])
         self.weapon_pos = (HALF_WIDTH - self.images[0].get_width() // 2, HEIGHT - self.images[0].get_height())
         self.reloading = False
         self.num_images = len(self.images)
@@ -16,7 +16,6 @@ class Weapon(AnimatedSprite):
     def animate_shot(self):
         if self.reloading:
             self.game.player.shot = False
-            
             if self.animation_trigger:
                 self.images.rotate(-1)
                 self.image = self.images[0]
